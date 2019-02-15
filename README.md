@@ -17,7 +17,7 @@ docker-compose down
 docker-compose build
 
 #Get into the docker
-docker exec -it 'container id' /bin/bash
+docker exec -it container_id /bin/bash
 ```
 
 2 - Run on the terminal (Only for linux distributions)
