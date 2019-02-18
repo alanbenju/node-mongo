@@ -1,3 +1,3 @@
 #!/bin/sh
-mongo local fillDB.js
+mongo node-server fillDB.js
 

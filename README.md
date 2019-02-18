@@ -19,7 +19,6 @@ docker-compose build
 #Get into the docker
 docker exec -it container_id /bin/bash
 ```
-
 2 - Run on the terminal (Only for linux distributions)
 ```bash
 ./start.sh
@@ -52,3 +51,21 @@ mocha tests
 
 - Post /user
 
+
+## Script to create users
+
+- Using docker
+    Get into the mongo docker
+    ```bash
+    cd scripts/
+    ./mongoScript.sh
+    ```    
+
+- Using start file
+    ```bash
+    cd scripts/
+    ./mongoScript.sh
+    ```    
+
+## IMPORTANT
+You can't share the database between the server lifted locally with the one served with docker

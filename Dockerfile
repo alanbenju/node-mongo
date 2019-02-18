@@ -1,6 +1,9 @@
-FROM node:10
+FROM node:boron
 
-WORKDIR /usr/src/app
+RUN mkdir node-mongo
+
+ADD . /node-mongo
+WORKDIR /node-mongo
 
 COPY package*.json ./
 

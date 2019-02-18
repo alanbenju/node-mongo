@@ -1,12 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const url = process.env.MONGO_URL || 'mongodb://localhost:27017'
+const url = process.env.MONGO_URL || 'mongodb://localhost:27017/node-server'
 const app = express();
 
 app.set('view engine', 'ejs');
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 console.log("Mongo url:",url)
 
 // Connect to MongoDB

@@ -6,15 +6,15 @@ exports.find = function (req, res) {
         users = users.map((user)=>{
             return user.toObject({ versionKey: false })
         })
-        res.send(users);
+        return res.send(users);
     })
 };
 
 exports.findOne = function (req, res) {
     User.findById(req.params.id,function (err, user) {
         if (err) return next(err);
-        if (!user) res.code(404).send("User not found")
-        res.send(user.toObject({ versionKey: false }));
+        if (!user) return res.status(404).send("User not found")
+        return res.send(user.toObject({ versionKey: false }));
     })
 };
 
@@ -30,9 +30,9 @@ exports.create = function (req, res) {
     user.save(user,function (err) {
         if (err) {
             console.log(err)
-            res.code(500).send(err)
+            return res.status(500).send(err)
         }
-        res.send('User created')
+        return res.send('User created')
     })
 };
 
@@ -45,9 +45,9 @@ exports.update = function (req, res) {
     User.findByIdAndUpdate(req.params.id,user,function (err) {
         if (err) {
             console.log(err)
-            res.code(500).send(err)
+            return res.status(500).send(err)
         }
-        res.send('User updated')
+        return res.send('User updated')
     })
 };
 
@@ -55,8 +55,8 @@ exports.delete = function(req,res){
     User.findByIdAndRemove(req.params.id,function (err) {
         if (err) {
             console.log(err)
-            res.code(500).send(err)
+            return res.status(500).send(err)
         }
-        res.send('User deleted')
+        return res.send('User deleted')
     })
 }
