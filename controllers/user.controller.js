@@ -30,9 +30,9 @@ exports.create = function (req, res) {
     user.save(user,function (err) {
         if (err) {
             console.log(err)
-            return res.status(500).send(err)
+            return res.status(409).send(err)
         }
-        return res.send('User created')
+        return res.send({"result":'User created'})
     })
 };
 
@@ -45,9 +45,9 @@ exports.update = function (req, res) {
     User.findByIdAndUpdate(req.params.id,user,function (err) {
         if (err) {
             console.log(err)
-            return res.status(500).send(err)
+            return res.status(409).send({"error":err})
         }
-        return res.send('User updated')
+        return res.send({"result":'User updated'})
     })
 };
 
@@ -55,8 +55,8 @@ exports.delete = function(req,res){
     User.findByIdAndRemove(req.params.id,function (err) {
         if (err) {
             console.log(err)
-            return res.status(500).send(err)
+            return res.status(490).send({"error":err})
         }
-        return res.send('User deleted')
+        return res.send({"result":'User deleted'})
     })
 }
